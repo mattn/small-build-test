@@ -1,8 +1,8 @@
 # small-build-test
 
-Minimal "hello world!" Docker Images in Go, Rust, and Zig.
+Minimal "hello world!" Docker Images in Go, Rust, and Zig, C.
 
-This repository demonstrates building extremely small Docker container images that simply print **"hello world!"** and exit. Each language (Go, Rust, Zig) uses multi-stage builds in Alpine Linux to compile a statically linked binary, then copies it into a `scratch` image for runtime.
+This repository demonstrates building extremely small Docker container images that simply print **"hello world!"** and exit. Each language (Go, Rust, Zig, C) uses multi-stage builds in Alpine Linux to compile a statically linked binary, then copies it into a `scratch` image for runtime.
 
 The goal is to compare resulting image sizes and build techniques for minimal, distributable containers (ideal for `scratch`-based deployments).
 
@@ -11,6 +11,9 @@ The goal is to compare resulting image sizes and build techniques for minimal, d
 ```
 .
 ├── README.md
+├── c
+│   ├── Dockerfile
+│   └── main.c
 ├── go
 │   ├── Dockerfile
 │   ├── go.mod
@@ -33,6 +36,11 @@ Each subdirectory contains a complete, self-contained example with its own `Dock
 To build and run an image:
 
 ```bash
+# For C
+cd c
+docker build -t hello-c .
+docker run --rm hello-c
+
 # For Go
 cd go
 docker build -t hello-go .
@@ -55,6 +63,7 @@ Note on image sizes: Actual compressed and uncompressed sizes vary by architectu
 
 ```
 IMAGE               ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-c:latest      1b8ad032a535       32.3kB         7.69kB        
 hello-go:latest     a271d8efdbc9       2.19MB          685kB        
 hello-rust:latest   fddb2fc1f9c7        615kB          206kB        
 hello-zig:latest    7f05505c80fe       28.9kB         8.45kB        
@@ -65,6 +74,11 @@ hello-zig:latest    7f05505c80fe       28.9kB         8.45kB
 Static linking: Ensures the binary has no external dependencies, allowing execution in the empty scratch image.
 Multi-stage builds: Use Alpine (or official images) for compilation, then discard everything except the final binary.
 Optimization flags: Strip debug symbols and optimize for size where possible.
+
+### C
+
+* Targets x86_64-unknown-linux-musl for musl-based static linking.
+* Build flags: -static -Os -s (strip debug info and symbols, optimize for size).
 
 ### Go
 
