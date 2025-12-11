@@ -55,12 +55,12 @@ docker build -t hello-nim .
 docker run --rm hello-nim
 
 # For Rust
-cd ../rust
+cd rust
 docker build -t hello-rust .
 docker run --rm hello-rust
 
 # For Zig
-cd ../zig
+cd zig
 docker build -t hello-zig .
 docker run --rm hello-zig
 ```
