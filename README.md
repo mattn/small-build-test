@@ -51,7 +51,16 @@ docker run --rm hello-zig
 
 Note on image sizes: Actual compressed and uncompressed sizes vary by architecture and exact compiler versions. Build them locally to measure (e.g., docker images hello-go).
 
-Key Techniques
+## Imaeg sizes
+
+```
+IMAGE               ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-go:latest     a271d8efdbc9       2.19MB          685kB        
+hello-rust:latest   fddb2fc1f9c7        615kB          206kB        
+hello-zig:latest    7f05505c80fe       28.9kB         8.45kB        
+```
+
+## Key Techniques
 
 Static linking: Ensures the binary has no external dependencies, allowing execution in the empty scratch image.
 Multi-stage builds: Use Alpine (or official images) for compilation, then discard everything except the final binary.
