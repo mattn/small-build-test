@@ -67,15 +67,15 @@ docker run --rm hello-zig
 
 Note on image sizes: Actual compressed and uncompressed sizes vary by architecture and exact compiler versions. Build them locally to measure (e.g., docker images hello-go).
 
-## Imaeg sizes
+## Image sizes
 
 ```
 IMAGE               ID             DISK USAGE   CONTENT SIZE   EXTRA
-hello-c:latest      1b8ad032a535       32.3kB         7.69kB
-hello-go:latest     a271d8efdbc9       2.19MB          685kB
-hello-nim:latest    6ee5577fd693         35kB         10.4kB
-hello-rust:latest   fddb2fc1f9c7        615kB          206kB
-hello-zig:latest    7f05505c80fe       28.9kB         8.45kB
+hello-c:latest      c7cd4b5c133c       32.3kB         7.69kB        
+hello-go:latest     0e09e86ed4c8       2.19MB          685kB        
+hello-nim:latest    c682005ede74         35kB         10.4kB        
+hello-rust:latest   3880bd223c1e        615kB          206kB        
+hello-zig:latest    b67df6ff5807       28.9kB         8.45kB        
 ```
 
 ## Key Techniques
