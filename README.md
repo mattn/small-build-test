@@ -1,8 +1,8 @@
 # small-build-test
 
-Minimal "hello world!" Docker Images in C, Go, Nim, Rust, and Zig.
+Minimal "hello world!" Docker Images in C, D, Go, Nim, Rust, and Zig.
 
-This repository demonstrates building extremely small Docker container images that simply print **"hello world!"** and exit. Each language (C, Go, Nim, Rust, Zig) uses multi-stage builds in Alpine Linux to compile a statically linked binary, then copies it into a `scratch` image for runtime.
+This repository demonstrates building extremely small Docker container images that simply print **"hello world!"** and exit. Each language (C, D, Go, Nim, Rust, Zig) uses multi-stage builds in Alpine Linux to compile a statically linked binary, then copies it into a `scratch` image for runtime.
 
 The goal is to compare resulting image sizes and build techniques for minimal, distributable containers (ideal for `scratch`-based deployments).
 
@@ -43,6 +43,11 @@ To build and run an image:
 cd c
 docker build -t hello-c .
 docker run --rm hello-c
+
+# For D
+cd d
+docker build -t hello-d .
+docker run --rm hello-d
 
 # For Go
 cd go
@@ -85,23 +90,33 @@ Multi-stage builds: Use Alpine (or official images) for compilation, then discar
 Optimization flags: Strip debug symbols and optimize for size where possible.
 
 ### C
+
 - Uses musl libc on Alpine for fully static linking.
 - Compilation flags: `-static -Os -s` (static link, optimize for size, strip symbols).
 
+### D
+
+- Uses `--static` for static linking.
+- Compilation flags: `-Oz --release --flto=full -L-Wl,--strip-all` (optimize for size,LTO,strip symbols)
+
 ### Go
+
 - Uses `CGO_ENABLED=0` for static linking.
 - Build flags: `-ldflags '-w -s'` (strip debug info and symbols).
 
 ### Nim
+
 - Uses Nim's C backend with musl on Alpine for fully static linking.
 - Compilation flags: `--opt:size --gc:arc -d:release -d:lto -d:strip -d:danger` (optimize for size, lightweight ARC garbage collector, LTO, strip symbols, disable runtime checks).
 - Produces extremely small static binaries, often comparable to C or Zig.
 
 ### Rust
+
 - Targets `x86_64-unknown-linux-musl` for musl-based static linking.
 - Release mode with size optimizations (`opt-level=z`, LTO, strip).
 
 ### Zig
+
 - Zig produces fully static binaries by default.
 - Simple single-file build (no `build.zig` needed for this minimal case).
 - Optimization: `-O ReleaseSmall --strip`.
