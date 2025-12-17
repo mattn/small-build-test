@@ -14,6 +14,9 @@ The goal is to compare resulting image sizes and build techniques for minimal, d
 ├── c
 │   ├── Dockerfile
 │   └── main.c
+├── d
+│   ├── Dockerfile
+│   └── main.d
 ├── go
 │   ├── Dockerfile
 │   ├── go.mod
