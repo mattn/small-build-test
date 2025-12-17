@@ -75,12 +75,13 @@ Note on image sizes: Actual compressed and uncompressed sizes vary by architectu
 ## Image sizes
 
 ```
-IMAGE               ID             DISK USAGE   CONTENT SIZE   EXTRA
-hello-c:latest      c7cd4b5c133c       32.3kB         7.69kB        
-hello-go:latest     0e09e86ed4c8       2.19MB          685kB        
-hello-nim:latest    c682005ede74         35kB         10.4kB        
-hello-rust:latest   3880bd223c1e        615kB          206kB        
-hello-zig:latest    b67df6ff5807       28.9kB         8.45kB        
+REPOSITORY                          IMAGE ID       SIZE
+hello-zig                           e0cb29ded308   28.9kB
+hello-c                             c389efafe6fe   32.3kB
+hello-nim                           2466ac0b4998   38.7kB
+hello-rust                          8d6a31448bdb   610kB
+hello-go                            1e5c3a771a79   2.19MB
+hello-d                             6fbaa97e11a2   6.17MB
 ```
 
 ## Key Techniques
