@@ -87,6 +87,10 @@ hello-go                            1e5c3a771a79   2.19MB
 hello-d                             6fbaa97e11a2   6.17MB
 ```
 
+```
+$ docker images --format "table {{.Repository}}\t{{.ID}}\t{{.Size}}" | sort -h -k3
+```
+
 ## Key Techniques
 
 Static linking: Ensures the binary has no external dependencies, allowing execution in the empty scratch image.
