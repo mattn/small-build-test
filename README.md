@@ -79,12 +79,12 @@ Note on image sizes: Actual compressed and uncompressed sizes vary by architectu
 
 ```
 REPOSITORY                          IMAGE ID       SIZE
-hello-zig                           e0cb29ded308   28.9kB
-hello-c                             c389efafe6fe   32.3kB
-hello-nim                           045039df2665   38.6kB
-hello-rust                          8d6a31448bdb   610kB
-hello-go                            1e5c3a771a79   2.19MB
-hello-d                             c8730f2e3526   5.93MB
+hello-zig                           6fa1f80b5a96   28.9kB
+hello-c                             738a0591da4e   32.3kB
+hello-nim                           188bba03872c   38.6kB
+hello-rust                          423867ae905d   610kB
+hello-go                            1b77c3410595   2.19MB
+hello-d                             1a890db5b40a   5.93MB
 ```
 
 ```
