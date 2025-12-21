@@ -79,7 +79,7 @@ Note on image sizes: Actual compressed and uncompressed sizes vary by architectu
 
 ```
 REPOSITORY                          IMAGE ID       SIZE
-hello-zig                           e0cb29ded308   28.9kB
+hello-zig                           af1a35340886   28.3kB
 hello-c                             c389efafe6fe   32.3kB
 hello-nim                           045039df2665   38.6kB
 hello-rust                          8d6a31448bdb   610kB
@@ -127,7 +127,7 @@ Optimization flags: Strip debug symbols and optimize for size where possible.
 
 - Zig produces fully static binaries by default.
 - Simple single-file build (no `build.zig` needed for this minimal case).
-- Optimization: `-O ReleaseSmall --strip`.
+- Optimization: `-O ReleaseSmall -fno-unwind-tables -z norelro --strip`.
 
 ## License
 
