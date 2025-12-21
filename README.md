@@ -84,7 +84,7 @@ hello-c                             c389efafe6fe   32.3kB
 hello-nim                           045039df2665   38.6kB
 hello-rust                          8d6a31448bdb   610kB
 hello-go                            1e5c3a771a79   2.19MB
-hello-d                             6fbaa97e11a2   6.17MB
+hello-d                             c8730f2e3526   5.93MB
 ```
 
 ```
@@ -105,7 +105,7 @@ Optimization flags: Strip debug symbols and optimize for size where possible.
 ### D
 
 - Uses `--static` for static linking.
-- Compilation flags: `-Oz --release --flto=full -L-Wl,--strip-all` (optimize for size,LTO,strip symbols)
+- Compilation flags: `-Oz --release --flto=full -L-Wl,-z,pack-relative-relocs -L-Wl,--build-id=none, -Wl,-z,norelro -L-Wl,--strip-all` (optimize for size,LTO,compress relative relocations, avoid relro padding, strip symbols)
 
 ### Go
 
